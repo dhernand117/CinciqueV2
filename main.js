@@ -13,7 +13,7 @@ const renderer = new THREE.WebGLRenderer({
 
 renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize(window.innerWidth, window.innerHeight);
-camera.position.setZ(30);
+camera.position.setZ(200);
 camera.position.setX(-3);
 
 renderer.render(scene, camera);
@@ -35,19 +35,19 @@ const ambientLight = new THREE.AmbientLight(0xffffff);
 scene.add(pointLight, ambientLight);
 
 function addStar() {
-  const geometry = new THREE.SphereGeometry(0.25, 24, 24);
+  const geometry = new THREE.SphereGeometry(0.25, 25, 25);
   const material = new THREE.MeshStandardMaterial({ color: 0xfb670c });
   const star = new THREE.Mesh(geometry, material);
 
   const [x, y, z] = Array(3)
     .fill()
-    .map(() => THREE.MathUtils.randFloatSpread(100));
+    .map(() => THREE.MathUtils.randFloatSpread(150));
 
   star.position.set(x, y, z);
   scene.add(star);
 }
 
-Array(1000).fill().forEach(addStar);
+Array(1500).fill().forEach(addStar);
 
 // Background
 
@@ -56,11 +56,11 @@ scene.background = spaceTexture;
 
 // Avatar
 
-const jeffTexture = new THREE.TextureLoader().load('cincique.jpg');
+const mainCube = new THREE.TextureLoader().load('cincique.jpg');
 
-const jeff = new THREE.Mesh(new THREE.BoxGeometry(3, 3, 3), new THREE.MeshBasicMaterial({ map: jeffTexture }));
+const cube = new THREE.Mesh(new THREE.BoxGeometry(3, 3, 3), new THREE.MeshBasicMaterial({ map: mainCube }));
 
-scene.add(jeff);
+scene.add(cube);
 
 // Moon
 
@@ -76,11 +76,20 @@ const moon = new THREE.Mesh(
 
 scene.add(moon);
 
-moon.position.z = 40;
+//Random Geometry
+const RGeometry = new THREE.TorusGeometry(10, 3, 16, 100);
+const RMaterial = new THREE.MeshStandardMaterial({ color: 0xfb670c });
+const RTorus = new THREE.Mesh(RGeometry, RMaterial);
+
+scene.add(RTorus);
+
+moon.position.z = 30;
 moon.position.setX(-10);
 
-jeff.position.z = -5;
-jeff.position.x = 2;
+cube.position.z = -5;
+cube.position.x = 2;
+
+RTorus.position.z = 50;
 
 
 // Scroll Animation
@@ -91,10 +100,10 @@ function moveCamera() {
   moon.rotation.y += 0.075;
   moon.rotation.z += 0.05;
 
-  jeff.rotation.y += 0.01;
-  jeff.rotation.z += 0.01;
+  cube.rotation.y += 0.04;
+  cube.rotation.z += 0.01;
 
-  camera.position.z = t * -0.01;
+  camera.position.z = t * -0.03;
   camera.position.x = t * -0.0002;
   camera.rotation.y = t * -0.0002;
 }
@@ -110,6 +119,10 @@ function animate() {
   torus.rotation.x += 0.01;
   torus.rotation.y += 0.005;
   torus.rotation.z += 0.01;
+
+  RTorus.rotation.x += 0.03;
+  RTorus.rotation.y += 0.01;
+  RTorus.rotation.z += 0.02;
 
   moon.rotation.x += 0.005;
 
