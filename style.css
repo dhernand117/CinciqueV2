@@ -1,5 +1,6 @@
 @import url("https://use.typekit.net/jmk3xov.css");
 @import url('https://fonts.googleapis.com/css2?family=Odibee+Sans&family=Pattaya&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&display=swap');
 
 canvas {
   position: fixed;
@@ -12,7 +13,7 @@ canvas {
   --dark-bg: rgba(15, 15, 15, 0.6);
   --spacing: 350px;
 
-  font-family: 'Odibee Sans', sans-serif;
+  font-family: 'Cinzel Decorative', sans-serif;
   font-weight: 400;
   font-style: normal;
 }
@@ -31,7 +32,7 @@ main {
 
 h1, h2, h3,p, blockquote {
   text-align: center;
-  font-family: 'Odibee Sans', sans-serif;
+  font-family: 'Cinzel Decorative', sans-serif;
   font-weight: 700;
   font-style: normal;
 }

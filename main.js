@@ -34,7 +34,7 @@ scene.add(pointLight, ambientLight);
 
 function addStar() {
   const geometry = new THREE.SphereGeometry(0.25, 25, 25);
-  const material = new THREE.MeshStandardMaterial({ color: 0xfb670c });
+  const material = new THREE.MeshLambertMaterial({ color: 0x08f2fa });
   const star = new THREE.Mesh(geometry, material);
 
   const [x, y, z] = Array(3)
@@ -49,28 +49,28 @@ Array(1500).fill().forEach(addStar);
 
 // Background
 
-const spaceTexture = new THREE.TextureLoader().load('../cincinight.jpg');
+const spaceTexture = new THREE.TextureLoader().load('./cincinight.jpg');
 scene.background = spaceTexture;
 
 // Avatar
 
-const mainCube = new THREE.TextureLoader().load('../cincique.jpg');
+const mainCube = new THREE.TextureLoader().load('./cincique.jpg');
 const cube = new THREE.Mesh(new THREE.BoxGeometry(3, 3, 3), new THREE.MeshBasicMaterial({ map: mainCube }));
 
 
-// Moon
+// earth
 
-const moonTexture = new THREE.TextureLoader().load('../moon.jpg');
+const earthTexture = new THREE.TextureLoader().load('./earth.jpg');
 
-const moon = new THREE.Mesh(
-  new THREE.SphereGeometry(3, 32, 32),
+const earth = new THREE.Mesh(
+  new THREE.SphereGeometry(6, 40, 40),
   new THREE.MeshStandardMaterial({
-    map: moonTexture,
+    map: earthTexture,
   })
 );
 
-moon.position.z = 30;
-moon.position.setX(-10);
+earth.position.z = 25;
+earth.position.setX(-10);
 
 cube.position.z = -5;
 cube.position.x = 2;
@@ -81,41 +81,42 @@ const RGeometry = new THREE.TorusGeometry(10, .5, 16, 100);
 const RMaterial = new THREE.MeshNormalMaterial({ color: 0xf0f0f0 });
 const RTorus = new THREE.Mesh(RGeometry, RMaterial);
 
-RTorus.position.z = 50;
+RTorus.position.z = 60;
 
 const LGeometry = new THREE.TorusGeometry(10, 0.5, 16, 100);
 const LMaterial = new THREE.MeshPhongMaterial({ color: 0x3ef8a8 });
 const LTorus = new THREE.Mesh(LGeometry, LMaterial);
 
-LTorus.position.z = 50;
+LTorus.position.z = 60;
 
 //Random Geometry 2
 
-const anotherMoon = new THREE.TextureLoader().load("../moon.jpg");
+const moonTexture = new THREE.TextureLoader().load("./moon.jpg");
 
-const moon2 = new THREE.Mesh(
+const moon = new THREE.Mesh(
   new THREE.SphereGeometry(3, 32, 32),
   new THREE.MeshStandardMaterial({
-    map: anotherMoon,
+    map: moonTexture,
   })
 );
 
-moon2.position.z = 50;
+moon.position.z = 60;
 
-scene.add(torus, cube, moon, RTorus,LTorus, moon2);
-
-
-
+scene.add(torus, cube, earth, RTorus, LTorus, moon);
 
 // Scroll Animation
 
 function moveCamera() {
   const t = document.body.getBoundingClientRect().top;
-  moon.rotation.x += 0.05;
-  moon.rotation.y += 0.075;
-  moon.rotation.z += 0.05;
+ //earth.rotation.x += 0.05;
+ earth.rotation.y += 0.075;
+ //earth.rotation.z += 0.05;
 
-  cube.rotation.y += 0.04;
+ // moon.rotation.x += 0.05;
+  moon.rotation.y += 0.075;
+//moon.rotation.z += 0.05;
+
+  cube.rotation.x += 0.04;
   cube.rotation.z += 0.01;
 
   camera.position.z = t * -0.015;
@@ -142,8 +143,7 @@ function animate() {
   LTorus.rotation.x += 0.02;
   LTorus.rotation.y += 0.02;
   LTorus.rotation.z += 0.01;
-
-  moon.rotation.x += 0.005;
+  earth.rotation.x += 0.005;
 
   renderer.render(scene, camera);
 }
