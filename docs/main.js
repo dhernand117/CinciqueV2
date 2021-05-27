@@ -49,18 +49,18 @@ Array(1500).fill().forEach(addStar);
 
 // Background
 
-const spaceTexture = new THREE.TextureLoader().load('cincinight.jpg');
+const spaceTexture = new THREE.TextureLoader().load('../cincinight.jpg');
 scene.background = spaceTexture;
 
 // Avatar
 
-const mainCube = new THREE.TextureLoader().load('cincique.jpg');
+const mainCube = new THREE.TextureLoader().load('../cincique.jpg');
 const cube = new THREE.Mesh(new THREE.BoxGeometry(3, 3, 3), new THREE.MeshBasicMaterial({ map: mainCube }));
 
 
 // Moon
 
-const moonTexture = new THREE.TextureLoader().load('moon.jpg');
+const moonTexture = new THREE.TextureLoader().load('../moon.jpg');
 
 const moon = new THREE.Mesh(
   new THREE.SphereGeometry(3, 32, 32),
@@ -91,7 +91,7 @@ LTorus.position.z = 50;
 
 //Random Geometry 2
 
-const anotherMoon = new THREE.TextureLoader().load("moon.jpg");
+const anotherMoon = new THREE.TextureLoader().load("../moon.jpg");
 
 const moon2 = new THREE.Mesh(
   new THREE.SphereGeometry(3, 32, 32),
