@@ -49,18 +49,18 @@ Array(1500).fill().forEach(addStar);
 
 // Background
 
-const spaceTexture = new THREE.TextureLoader().load('./cincinight.jpg');
+const spaceTexture = new THREE.TextureLoader().load('./media/cincinight2.png');
 scene.background = spaceTexture;
 
 // Avatar
 
-const mainCube = new THREE.TextureLoader().load('./cincique.jpg');
+const mainCube = new THREE.TextureLoader().load('./media/cincique.jpg');
 const cube = new THREE.Mesh(new THREE.BoxGeometry(3, 3, 3), new THREE.MeshBasicMaterial({ map: mainCube }));
 
 
 // earth
 
-const earthTexture = new THREE.TextureLoader().load('./earth.jpg');
+const earthTexture = new THREE.TextureLoader().load('./media/earth.jpg');
 
 const earth = new THREE.Mesh(
   new THREE.SphereGeometry(6, 40, 40),
@@ -91,7 +91,7 @@ LTorus.position.z = 60;
 
 //Random Geometry 2
 
-const moonTexture = new THREE.TextureLoader().load("./moon.jpg");
+const moonTexture = new THREE.TextureLoader().load("./media/moon.jpg");
 
 const moon = new THREE.Mesh(
   new THREE.SphereGeometry(3, 32, 32),
@@ -109,11 +109,11 @@ scene.add(torus, cube, earth, RTorus, LTorus, moon);
 function moveCamera() {
   const t = document.body.getBoundingClientRect().top;
  //earth.rotation.x += 0.05;
- earth.rotation.y += 0.075;
+ earth.rotation.y += 0.06;
  //earth.rotation.z += 0.05;
 
  // moon.rotation.x += 0.05;
-  moon.rotation.y += 0.075;
+  moon.rotation.y += 0.07;
 //moon.rotation.z += 0.05;
 
   cube.rotation.x += 0.04;
@@ -143,7 +143,10 @@ function animate() {
   LTorus.rotation.x += 0.02;
   LTorus.rotation.y += 0.02;
   LTorus.rotation.z += 0.01;
-  earth.rotation.x += 0.005;
+
+  earth.rotation.y += 0.005;
+  //earth.rotation.x += 0.001;
+  moon.rotation.y += 0.007;
 
   renderer.render(scene, camera);
 }

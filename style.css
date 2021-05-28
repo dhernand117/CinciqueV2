@@ -43,14 +43,16 @@ canvas {
   left: 0;
 }
 
-
-
   header, footer {
     background: var(--dark-bg);
     grid-column: 2 / span 5;
-    font-size: 2.5rem;
-    padding: 2rem;
+    font-size: 2.5rem; 
     margin-bottom: var(--spacing);
+  }
+
+  footer{
+    margin-top: 7rem;
+    width: 60vw;
   }
 
   section {
@@ -59,14 +61,14 @@ canvas {
     background: var(--dark-bg);
     font-size: 1.25rem;
     line-height: 1.5;
-    margin-bottom: var(--spacing);
+    margin-bottom:  var(--spacing);
   }
 
   blockquote {
     margin: 0;
     padding: 0;
     grid-column: 2 / span 9;
-    margin-bottom: var(--spacing);
+    margin-bottom: 2rem;
   }
 
   blockquote p {
@@ -76,6 +78,25 @@ canvas {
     display: inline;
     line-height: 1;
   }
+
+  #slogan {
+    padding-bottom: 25em;
+  }
+
+  .hover-zoom {
+  display: inline-block;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  background-size: 130%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: gray;
+  position: relative;
+}
+
+.hover-zoom:hover {
+  background-size: 200%;
+}
 
   .left {
     grid-column: 6 / 12;
